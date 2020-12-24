@@ -1,4 +1,12 @@
-# Dactyl ManuForm Mini Keyboard
+# Dactyl ManuForm Mini, Solidhal redux
+
+## Changes from the standard mini:
+- 5x6 layout
+- outer pinkies are 1u, since I already have tons of 1u
+- moved screw holes to work with smaller outer pinkies
+
+[render](right.png)
+
 
 This is a fork of the [Dactyl-ManuForm](https://github.com/tshort/dactyl-keyboard). The Dactyl-Manuform is a fork of the [Dactyl](https://github.com/adereth/dactyl-keyboard) with the thumb cluster from [ManuForm](https://github.com/jeffgran/ManuForm).
 
