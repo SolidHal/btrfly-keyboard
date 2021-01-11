@@ -8,6 +8,5 @@
 *.gcode
 *.scad
 /target
-*.stl
 *.ai
 *.svg
