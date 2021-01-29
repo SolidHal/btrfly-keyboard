@@ -3,7 +3,10 @@
 ## Changes from the standard mini:
 - 5x6 layout
 - outer pinkies are 1u, since I already have tons of 1u
-- moved screw holes to work with smaller outer pinkies
+- pinkie colomns are now shorter in height, resulting in a greater tent angle
+- made footprint smaller by making walls steeper
+- moved keys closer together
+- moved screw holes to work with all of that
 
 [render](right.png)
 

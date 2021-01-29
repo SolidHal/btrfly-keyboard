@@ -26,19 +26,21 @@
 (def pinky-15u false)
 
 (defn column-offset [column] (cond
-                               (= column 2) [0 2.82 -4.5]
-                               (>= column 4) [0 -12 5.64]            ; original [0 -5.8 5.64]
+                               (= column 2) [0 2.82 -4.5] ; middle finger
+                               (= column 3) [0 0 -1] ; ring finger
+                               ;(>= column 4) [0 0 0]            ; keep pinky in line with first rows
+                               (>= column 4) [0 -3 0]            ; original [0 -5.8 5.64]
                                :else [0 0 0]))
 
 (def thumb-offsets [6 -3 7])
 
-(def keyboard-z-offset 9)               ; controls overall height; original=9 with centercol=3; use 16 for centercol=2
+(def keyboard-z-offset 13)               ; controls overall height; original=9 with centercol=3; use 16 for centercol=2
 
-(def extra-width 2.5)                   ; extra space between the base of keys; original= 2
-(def extra-height 1.0)                  ; original= 0.5
+(def extra-width 2)                   ; extra space between the base of keys; original= 2
+(def extra-height 0.5)                  ; original= 0.5
 
-(def wall-z-offset -5)                 ; original=-15 length of the first downward-sloping part of the wall (negative)
-(def wall-xy-offset 5)                  ; offset in the x and/or y direction for the first downward-sloping part of the wall (negative)
+(def wall-z-offset -3)                 ; original=-15 length of the first downward-sloping part of the wall (negative)
+(def wall-xy-offset 1)                  ; offset in the x and/or y direction for the first downward-sloping part of the wall (negative)
 (def wall-thickness 3)                  ; wall thickness parameter; originally 5
 
 ;; Settings for column-style == :fixed
@@ -589,7 +591,7 @@
 
 (def usb-holder-ref (key-position 0 0 (map - (wall-locate2  0  -1) [0 (/ mount-height 2) 0])))
 
-(def usb-holder-position (map + [17 19.3 0] [(first usb-holder-ref) (second usb-holder-ref) 2]))
+(def usb-holder-position (map + [17 15 0] [(first usb-holder-ref) (second usb-holder-ref) 2]))
 (def usb-holder-cube   (cube 15 12 2))
 (def usb-holder-space  (translate (map + usb-holder-position [0 (* -1 wall-thickness) 1]) usb-holder-cube))
 (def usb-holder-holder (translate usb-holder-position (cube 19 12 4)))
@@ -649,13 +651,13 @@
          (translate (map + offset [(first position) (second position) (/ height 2)])))))
 
 (defn screw-insert-all-shapes [bottom-radius top-radius height]
-  (union (screw-insert 0 0         bottom-radius top-radius height [11 10 0])
-         (screw-insert 0 lastrow   bottom-radius top-radius height [0 0 0])
+  (union (screw-insert 0 0         bottom-radius top-radius height [6.25 7.75 0]) ; under y/t key
+         (screw-insert 0 lastrow   bottom-radius top-radius height [-1 2 0]) ; under top of middle thumb colomo
         ;  (screw-insert lastcol lastrow  bottom-radius top-radius height [-5 13 0])
         ;  (screw-insert lastcol 0         bottom-radius top-radius height [-3 6 0])
-         (screw-insert lastcol lastrow  bottom-radius top-radius height [-6 11 0])
-         (screw-insert lastcol 0         bottom-radius top-radius height [-5 11 0])
-         (screw-insert 1 lastrow         bottom-radius top-radius height [0 -16 0])))
+         (screw-insert lastcol lastrow  bottom-radius top-radius height [-2.2 13.2 0]) ; under ctrl key
+         (screw-insert lastcol 0         bottom-radius top-radius height [-2 8 0]) ; under esc key
+         (screw-insert 1 lastrow         bottom-radius top-radius height [-3 -19 0]))) ; under bottom of middle thumb colomn
 
 ; Hole Depth Y: 4.4
 (def screw-insert-height 4)
