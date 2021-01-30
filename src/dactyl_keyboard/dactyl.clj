@@ -29,12 +29,12 @@
                                (= column 2) [0 2.82 -4.5] ; middle finger
                                (= column 3) [0 0 -1] ; ring finger
                                ;(>= column 4) [0 0 0]            ; keep pinky in line with first rows
-                               (>= column 4) [0 -3 0]            ; original [0 -5.8 5.64]
+                               (>= column 4) [0 -3 -3]            ; original [0 -5.8 5.64]
                                :else [0 0 0]))
 
 (def thumb-offsets [6 -3 7])
 
-(def keyboard-z-offset 13)               ; controls overall height; original=9 with centercol=3; use 16 for centercol=2
+(def keyboard-z-offset 16.5)               ; controls overall height; original=9 with centercol=3; use 16 for centercol=2
 
 (def extra-width 2)                   ; extra space between the base of keys; original= 2
 (def extra-height 0.5)                  ; original= 0.5
