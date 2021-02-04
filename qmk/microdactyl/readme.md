@@ -1,3 +1,24 @@
+# Microdactyl
+
+to flash this keymap, grab a copy of qmk, copy this "microdactyl" directory into qmk/keyboards/handwired and from the qmk root run:
+```
+make handwired/microdactyl/4x6:default:flash
+```
+
+you can also get a .json file to upload to the qmk configurator by running:
+```
+./bin/qmk c2json -km DEFAULT -kb handwired/microdactyl/4x6 'keyboards/handwired/microdactyl/4x6/keymaps/default/keymap.c' > microdactyl.json 
+```
+
+to get the configurator to recognize the file you might have to change the keyboard name to `handwired/dactyl-manuform/4x6`
+
+
+
+
+
+
+
+
 Dactyl Manuform (4x5, 5x6, 5x7, 6x6)
 ======
 the [Dactyl-Manuform](https://github.com/tshort/dactyl-keyboard) is a split curved keyboard based on the design of [adereth dactyl](https://github.com/adereth/dactyl-keyboard) and thumb cluster design of the [manuform](https://geekhack.org/index.php?topic=46015.0) keyboard, the hardware is similar to the let's split keyboard. all information needed for making one is in the first link.
