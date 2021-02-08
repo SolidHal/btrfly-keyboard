@@ -18,7 +18,7 @@
 (def α (/ π 12))                        ; curvature of the columns
 (def β (/ π 36))                        ; curvature of the rows
 (def centerrow (- nrows 3))             ; controls front-back tilt
-(def centercol 3)                       ; controls left-right tilt / tenting (higher number is more tenting)
+(def centercol 4)                       ; controls left-right tilt / tenting (higher number is more tenting)
 (def tenting-angle (/ π 12))            ; or, change this for more precise tenting control
 (def column-style
   (if (> nrows 5) :orthographic :standard))  ; options include :standard, :orthographic, and :fixed
@@ -27,7 +27,7 @@
 
 (defn column-offset [column] (cond
                                (= column 2) [0 2.82 -4.5] ; middle finger
-                               (= column 3) [0 0 -1] ; ring finger
+                               (= column 3) [0 0 -2] ; ring finger
                                ;(>= column 4) [0 0 0]            ; keep pinky in line with first rows
                                (>= column 4) [0 -3 -3]            ; original [0 -5.8 5.64]
                                :else [0 0 0]))
@@ -596,9 +596,9 @@
 (def usb-holder-space  (translate (map + usb-holder-position [0 (* -1 wall-thickness) 1]) usb-holder-cube))
 (def usb-holder-holder (translate usb-holder-position (cube 19 12 4)))
 
-(def usb-jack (translate (map + usb-holder-position [0 10 3]) (cube 8.1 20 3.1)))
+(def usb-jack (translate (map + usb-holder-position [0 10 3]) (cube 15 20 6))) ; the cube defines the shape of the usb port in the wall
 
-(def pro-micro-position (map + (key-position 0 1 (wall-locate3 -1 0)) [-6 2 -15]))
+(def pro-micro-position (map + (key-position 0 1 (wall-locate3 -1 0)) [-6 2 -26]))
 (def pro-micro-space-size [4 10 12]) ; z has no wall;
 (def pro-micro-wall-thickness 2)
 (def pro-micro-holder-size [(+ pro-micro-wall-thickness (first pro-micro-space-size)) (+ pro-micro-wall-thickness (second pro-micro-space-size)) (last pro-micro-space-size)])
@@ -652,10 +652,10 @@
 
 (defn screw-insert-all-shapes [bottom-radius top-radius height]
   (union (screw-insert 0 0         bottom-radius top-radius height [6.25 7.75 0]) ; under y/t key
-         (screw-insert 0 lastrow   bottom-radius top-radius height [-1 2 0]) ; under top of middle thumb colomo
+         (screw-insert 0 lastrow   bottom-radius top-radius height [-2.5 2 0]) ; under top of middle thumb colomo
         ;  (screw-insert lastcol lastrow  bottom-radius top-radius height [-5 13 0])
         ;  (screw-insert lastcol 0         bottom-radius top-radius height [-3 6 0])
-         (screw-insert lastcol lastrow  bottom-radius top-radius height [-2.2 13.2 0]) ; under ctrl key
+         (screw-insert lastcol lastrow  bottom-radius top-radius height [-2.5 13.5 0]) ; under ctrl key
          (screw-insert lastcol 0         bottom-radius top-radius height [-2 8 0]) ; under esc key
          (screw-insert 1 lastrow         bottom-radius top-radius height [-3 -19 0]))) ; under bottom of middle thumb colomn
 
