@@ -32,7 +32,7 @@
                                (>= column 4) [0 -3 -3]            ; original [0 -5.8 5.64]
                                :else [0 0 0]))
 
-(def thumb-offsets [6 -3 7])
+(def thumb-offsets [6 -3 7]) ; location of thumb cluster relative to main keyboard body
 
 (def keyboard-z-offset 16.5)               ; controls overall height; original=9 with centercol=3; use 16 for centercol=2
 
@@ -333,7 +333,7 @@
        (rotate (deg2rad -23) [0 1 0])
        (rotate (deg2rad  25) [0 0 1]) ; original 10
        (translate thumborigin)
-       (translate [-35 -16 -2]))) ; original 1.5u (translate [-32 -15 -2])))
+       (translate [-34 -15.15 -1.4]))) ; original (translate [-35 -16 -2])))
 
 
 (defn thumb-mr-place [shape]
@@ -342,21 +342,21 @@
        (rotate (deg2rad -23) [0 1 0])
        (rotate (deg2rad  25) [0 0 1])
        (translate thumborigin)
-       (translate [-23 -34 -6])))
+       (translate [-21 -33 -4.3]))) ; (translate [-23 -34 -6])
 (defn thumb-br-place [shape]
   (->> shape
        (rotate (deg2rad   6) [1 0 0])
        (rotate (deg2rad -34) [0 1 0])
        (rotate (deg2rad  35) [0 0 1])
        (translate thumborigin)
-       (translate [-39 -43 -16])))
+       (translate [-36 -42 -13.7]))) ; (translate [-39 -43 -16])
 (defn thumb-bl-place [shape]
   (->> shape
        (rotate (deg2rad   6) [1 0 0])
        (rotate (deg2rad -32) [0 1 0])
        (rotate (deg2rad  35) [0 0 1])
        (translate thumborigin)
-       (translate [-51 -25 -11.5]))) ;        (translate [-51 -25 -12])))
+       (translate [-48.5 -24 -10.3]))) ;        (translate [-51 -25 -12])))
 
 
 (defn thumb-1x-layout [shape]
