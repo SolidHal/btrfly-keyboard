@@ -13,7 +13,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;
 
 (def nrows 4)
-(def ncols 6)
+(def ncols 5)
 
 (def α (/ π 12))                        ; curvature of the columns
 (def β (/ π 36))                        ; curvature of the rows
@@ -34,7 +34,7 @@
 
 (def thumb-offsets [6 -3 7]) ; location of thumb cluster relative to main keyboard body
 
-(def keyboard-z-offset 16.5)               ; controls overall height; original=9 with centercol=3; use 16 for centercol=2
+(def keyboard-z-offset 11)               ; controls overall height; original=9 with centercol=3; use 16 for centercol=2
 
 (def extra-width 2)                   ; extra space between the base of keys; original= 2
 (def extra-height 0.5)                  ; original= 0.5
@@ -598,7 +598,7 @@
 
 (def usb-jack (translate (map + usb-holder-position [0 10 3]) (cube 15 20 6))) ; the cube defines the shape of the usb port in the wall
 
-(def pro-micro-position (map + (key-position 0 1 (wall-locate3 -1 0)) [-6 2 -26]))
+(def pro-micro-position (map + (key-position 0 1 (wall-locate3 -1 0)) [-6 2 -28]))
 (def pro-micro-space-size [4 10 12]) ; z has no wall;
 (def pro-micro-wall-thickness 2)
 (def pro-micro-holder-size [(+ pro-micro-wall-thickness (first pro-micro-space-size)) (+ pro-micro-wall-thickness (second pro-micro-space-size)) (last pro-micro-space-size)])
@@ -655,7 +655,7 @@
          (screw-insert 0 lastrow   bottom-radius top-radius height [-2.5 2 0]) ; under top of middle thumb colomo
         ;  (screw-insert lastcol lastrow  bottom-radius top-radius height [-5 13 0])
         ;  (screw-insert lastcol 0         bottom-radius top-radius height [-3 6 0])
-         (screw-insert lastcol lastrow  bottom-radius top-radius height [-2.5 13.5 0]) ; under ctrl key
+         (screw-insert lastcol lastrow  bottom-radius top-radius height [-2.85 13.5 0]) ; under ctrl key
          (screw-insert lastcol 0         bottom-radius top-radius height [-2 8 0]) ; under esc key
          (screw-insert 1 lastrow         bottom-radius top-radius height [-3 -19 0]))) ; under bottom of middle thumb colomn
 
