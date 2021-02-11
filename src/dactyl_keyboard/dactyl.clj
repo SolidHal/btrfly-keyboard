@@ -15,11 +15,11 @@
 (def nrows 4)
 (def ncols 5)
 
-(def α (/ π 12))                        ; curvature of the columns
-(def β (/ π 36))                        ; curvature of the rows
+(def α (/ π 12))                        ; curvature along the columns
+(def β (/ π 36))                        ; curvature along the rows
 (def centerrow (- nrows 3))             ; controls front-back tilt
 (def centercol 4)                       ; controls left-right tilt / tenting (higher number is more tenting)
-(def tenting-angle (/ π 12))            ; or, change this for more precise tenting control
+(def tenting-angle (/ π 10))            ; or, change this for more precise tenting control
 (def column-style
   (if (> nrows 5) :orthographic :standard))  ; options include :standard, :orthographic, and :fixed
 ; (def column-style :fixed)
@@ -34,7 +34,7 @@
 
 (def thumb-offsets [6 -3 7]) ; location of thumb cluster relative to main keyboard body
 
-(def keyboard-z-offset 11)               ; controls overall height; original=9 with centercol=3; use 16 for centercol=2
+(def keyboard-z-offset 10)               ; controls overall height; original=9 with centercol=3; use 16 for centercol=2
 
 (def extra-width 2)                   ; extra space between the base of keys; original= 2
 (def extra-height 0.5)                  ; original= 0.5
@@ -655,7 +655,7 @@
          (screw-insert 0 lastrow   bottom-radius top-radius height [-2.5 2 0]) ; under top of middle thumb colomo
         ;  (screw-insert lastcol lastrow  bottom-radius top-radius height [-5 13 0])
         ;  (screw-insert lastcol 0         bottom-radius top-radius height [-3 6 0])
-         (screw-insert lastcol lastrow  bottom-radius top-radius height [-2.85 13.5 0]) ; under ctrl key
+         (screw-insert lastcol lastrow  bottom-radius top-radius height [-3.1 13.5 0]) ; under ctrl key
          (screw-insert lastcol 0         bottom-radius top-radius height [-2 8 0]) ; under esc key
          (screw-insert 1 lastrow         bottom-radius top-radius height [-3 -19 0]))) ; under bottom of middle thumb colomn
 
