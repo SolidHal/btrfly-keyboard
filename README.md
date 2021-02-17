@@ -1,5 +1,6 @@
 # Dactyl ManuForm Mini, Solidhal redux
 
+
 ## Changes from the standard mini:
 - 5x6 layout
 - outer pinkies are 1u, since I already have tons of 1u
@@ -14,6 +15,17 @@
 This is a fork of the [Dactyl-ManuForm](https://github.com/tshort/dactyl-keyboard). The Dactyl-Manuform is a fork of the [Dactyl](https://github.com/adereth/dactyl-keyboard) with the thumb cluster from [ManuForm](https://github.com/jeffgran/ManuForm).
 
 Build log: https://www.beekeeb.com/dactyl-manuform-mini-mechanical-keyboard-build-log/
+
+
+## Build QMK
+copy qmk/microdactyl to a new qmk checkout, under the keybaords/handwired directory
+```
+cp -a qmk/microdactyl $QMK_DIR/keyboards/handwires/
+```
+then flash by running the following from your qmk checkout
+```
+make handwired/microdactyl/4x6:default:flash
+```
 
 ## Forks
 
