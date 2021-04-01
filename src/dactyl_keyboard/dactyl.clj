@@ -15,28 +15,28 @@
 (def nrows 4)
 (def ncols 5)
 
-(def α (/ π 12))                        ; curvature along the columns
-(def β (/ π 36))                        ; curvature along the rows
+(def α (/ π 360))                        ; curvature along the columns
+(def β (/ π 360))                        ; curvature along the rows
 (def centerrow (- nrows 3))             ; controls front-back tilt
 (def centercol 4)                       ; controls left-right tilt / tenting (higher number is more tenting)
-(def tenting-angle (/ π 10))            ; or, change this for more precise tenting control
+(def tenting-angle (/ π 7))            ; or, change this for more precise tenting control
 (def column-style
   (if (> nrows 5) :orthographic :standard))  ; options include :standard, :orthographic, and :fixed
 ; (def column-style :fixed)
 (def pinky-15u false)
 
 (defn column-offset [column] (cond
-                               (= column 2) [0 2.82 -4.5] ; middle finger
-                               (= column 3) [0 0 -2] ; ring finger
+                               (= column 2) [0 0 0] ; middle finger
+                               (= column 3) [0 0 0] ; ring finger
                                ;(>= column 4) [0 0 0]            ; keep pinky in line with first rows
-                               (>= column 4) [0 -3 -3]            ; original [0 -5.8 5.64]
+                               (>= column 4) [0 0 0]            ; original [0 -5.8 5.64]
                                :else [0 0 0]))
 
 (def thumb-offsets [6 -3 7]) ; location of thumb cluster relative to main keyboard body
 
-(def keyboard-z-offset 10)               ; controls overall height; original=9 with centercol=3; use 16 for centercol=2
+(def keyboard-z-offset 8)               ; controls overall height; original=9 with centercol=3; use 16 for centercol=2
 
-(def extra-width 2)                   ; extra space between the base of keys; original= 2
+(def extra-width 1.5)                   ; extra space between the base of keys; original= 2
 (def extra-height 0.5)                  ; original= 0.5
 
 (def wall-z-offset -3)                 ; original=-15 length of the first downward-sloping part of the wall (negative)
@@ -527,17 +527,21 @@
    (for [x (range 0 ncols)] (key-wall-brace x 0 0 1 web-post-tl x       0 0 1 web-post-tr))
    (for [x (range 1 ncols)] (key-wall-brace x 0 0 1 web-post-tl (dec x) 0 0 1 web-post-tr))
 
+   ;TODO: figure out how to get these walls angled differently
    ; left wall
-   (for [y (range 0 lastrow)] (union (wall-brace (partial left-key-place y 1)       -1 0 web-post (partial left-key-place y -1) -1 0 web-post)
+   (for [y (range 0 lastrow)] (union 
                                      (hull (key-place 0 y web-post-tl)
                                            (key-place 0 y web-post-bl)
                                            (left-key-place y  1 web-post)
                                            (left-key-place y -1 web-post))))
-   (for [y (range 1 lastrow)] (union (wall-brace (partial left-key-place (dec y) -1) -1 0 web-post (partial left-key-place y  1) -1 0 web-post)
-                                     (hull (key-place 0 y       web-post-tl)
-                                           (key-place 0 (dec y) web-post-bl)
-                                           (left-key-place y        1 web-post)
-                                           (left-key-place (dec y) -1 web-post))))
+
+   ; tweeners
+   ;; (for [y (range 1 lastrow)] (union (wall-brace (partial left-key-place (dec y) -1) -1 0 web-post (partial left-key-place y  1) -1 0 web-post)
+   ;;                                   (hull (key-place 0 y       web-post-tl)
+   ;;                                         (key-place 0 (dec y) web-post-bl)
+   ;;                                         (left-key-place y        1 web-post)
+   ;;                                         (left-key-place (dec y) -1 web-post))))
+   ; left/front corner
    (wall-brace (partial key-place 0 0) 0 1 web-post-tl (partial left-key-place 0 1) 0 1 web-post)
    (wall-brace (partial left-key-place 0 1) 0 1 web-post (partial left-key-place 0 1) -1 0 web-post)
    ; front wall
@@ -716,8 +720,46 @@
                                screw-insert-holes))
                   (translate [0 0 -20] (cube 350 350 40))))
 
+
+(def model-right-squish (difference
+                  (union
+                   key-holes
+                   pinky-connectors
+                   pinky-walls
+                   connectors
+                   thumb
+                   thumb-connectors
+                   (difference (union case-walls
+                                      screw-insert-outers
+                                      )
+                               screw-insert-holes))
+                  (translate [0 0 -20] (cube 350 350 40))))
+
+
+(def model-left-squish (difference
+                         (union
+                          key-holes
+                          pinky-connectors
+                          pinky-walls
+                          connectors
+                          thumb
+                          thumb-connectors
+                          (difference (union case-walls
+                                             screw-insert-outers
+                                             usb-holder-holder
+                                             trrs-holder)
+                                      usb-holder-space
+                                      usb-jack
+                                      trrs-holder-hole
+                                      screw-insert-holes))
+                         (translate [0 0 -20] (cube 350 350 40))))
+
 (spit "things/right.scad"
-      (write-scad model-right))
+      (write-scad
+       (union
+        (translate[ 87 0 0] ( rotate (/ π 15) [0 0 1] model-right-squish))
+        (translate[ -87 0 0]  ( rotate (/ π 15) [0 0 -1] (mirror [-1 0 0] model-left-squish)))
+        )))
 
 (spit "things/left.scad"
       (write-scad (mirror [-1 0 0] model-right)))
