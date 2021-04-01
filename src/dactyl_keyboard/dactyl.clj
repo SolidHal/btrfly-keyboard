@@ -481,6 +481,20 @@
 (def left-wall-x-offset 5) ; original 10
 (def left-wall-z-offset  3) ; original 3
 
+(defn left-key-position-squish [row direction]
+  (cond
+    (= row 0) (map - (key-position 0 row [(* mount-width 0) (* direction mount-height 0.5) 0]) [19.7 0 -3.75])
+    (= row 1) (map - (key-position 0 row [(* mount-width 0) (* direction mount-height 0.5) 0]) [23.5 0 -3.75])
+    (= row 2) (map - (key-position 0 row [(* mount-width 0) (* direction mount-height 0.5) 0]) [27.4 0 -3.75])
+    ; used for the left/front corner
+    (= row 100) (map - (key-position 0 0 [(* mount-width 0) (* direction mount-height 0.5) 0]) [16.1 0 -3.75])
+    :else (map - (key-position 0 row [(* mount-width 0) (* direction mount-height 0.5) 0]) [20 0 -3.7])
+  ))
+
+(defn left-key-place-squish [row direction shape]
+  (translate (left-key-position-squish row direction) shape))
+
+
 (defn left-key-position [row direction]
   (map - (key-position 0 row [(* mount-width -0.5) (* direction mount-height 0.5) 0]) [left-wall-x-offset 0 left-wall-z-offset]))
 
@@ -527,23 +541,22 @@
    (for [x (range 0 ncols)] (key-wall-brace x 0 0 1 web-post-tl x       0 0 1 web-post-tr))
    (for [x (range 1 ncols)] (key-wall-brace x 0 0 1 web-post-tl (dec x) 0 0 1 web-post-tr))
 
-   ;TODO: figure out how to get these walls angled differently
-   ; left wall
-   (for [y (range 0 lastrow)] (union 
+   ; left wall/ceiling
+   (for [y (range 0 lastrow)] (union
                                      (hull (key-place 0 y web-post-tl)
                                            (key-place 0 y web-post-bl)
-                                           (left-key-place y  1 web-post)
-                                           (left-key-place y -1 web-post))))
+                                           (left-key-place-squish y  1 web-post)
+                                           (left-key-place-squish y -1 web-post))))
 
-   ; tweeners
-   ;; (for [y (range 1 lastrow)] (union (wall-brace (partial left-key-place (dec y) -1) -1 0 web-post (partial left-key-place y  1) -1 0 web-post)
-   ;;                                   (hull (key-place 0 y       web-post-tl)
-   ;;                                         (key-place 0 (dec y) web-post-bl)
-   ;;                                         (left-key-place y        1 web-post)
-   ;;                                         (left-key-place (dec y) -1 web-post))))
+   ; tweeners for left wall/ceiling
+   (for [y (range 1 lastrow)] (union 
+                                     (hull (key-place 0 y       web-post-tl)
+                                           (key-place 0 (dec y) web-post-bl)
+                                           (left-key-place-squish y        1 web-post)
+                                           (left-key-place-squish (dec y) -1 web-post))))
    ; left/front corner
-   (wall-brace (partial key-place 0 0) 0 1 web-post-tl (partial left-key-place 0 1) 0 1 web-post)
-   (wall-brace (partial left-key-place 0 1) 0 1 web-post (partial left-key-place 0 1) -1 0 web-post)
+   (wall-brace (partial key-place 0 0) 0 1 web-post-tl (partial left-key-place-squish 100 1) 0 1 web-post)
+   ;; (wall-brace (partial left-key-place 0 1) 0 1 web-post (partial left-key-place 0 1) -1 0 web-post)
    ; front wall
    (key-wall-brace 3 lastrow   0 -1 web-post-bl 3 lastrow 0.5 -1 web-post-br)
    (key-wall-brace 3 lastrow 0.5 -1 web-post-br 4 cornerrow 0.5 -1 web-post-bl)
