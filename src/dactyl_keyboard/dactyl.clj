@@ -264,6 +264,7 @@
 (def web-post-tl (translate [(+ (/ mount-width -2) post-adj) (- (/ mount-height 2) post-adj) 0] web-post))
 (def web-post-bl (translate [(+ (/ mount-width -2) post-adj) (+ (/ mount-height -2) post-adj) 0] web-post))
 (def web-post-br (translate [(- (/ mount-width 2) post-adj) (+ (/ mount-height -2) post-adj) 0] web-post))
+(def web-post-tl-squish (translate[1.5 21 11]  web-post-tl))
 
 ; wide posts for 1.5u keys in the main cluster
 
@@ -432,6 +433,7 @@
     (thumb-tl-place web-post-br)
     (thumb-mr-place web-post-tr))
    (triangle-hulls    ; top two to the main keyboard, starting on the left
+    (thumb-tl-place web-post-tl-squish)
     (thumb-tl-place web-post-tl)
     (key-place 0 cornerrow web-post-bl)
     (thumb-tl-place web-post-tr)
@@ -557,16 +559,27 @@
    ; left/front corner
    (wall-brace (partial key-place 0 0) 0 1 web-post-tl (partial left-key-place-squish 100 1) 0 1 web-post)
    ;; (wall-brace (partial left-key-place 0 1) 0 1 web-post (partial left-key-place 0 1) -1 0 web-post)
+
    ; front wall
    (key-wall-brace 3 lastrow   0 -1 web-post-bl 3 lastrow 0.5 -1 web-post-br)
    (key-wall-brace 3 lastrow 0.5 -1 web-post-br 4 cornerrow 0.5 -1 web-post-bl)
    (for [x (range 4 ncols)] (key-wall-brace x cornerrow 0 -1 web-post-bl x       cornerrow 0 -1 web-post-br)) ; TODO fix extra wall
    (for [x (range 5 ncols)] (key-wall-brace x cornerrow 0 -1 web-post-bl (dec x) cornerrow 0 -1 web-post-br))
+
+   ;thumb ceiling
+   ;; (wall-brace thumb-bl-place  0  1 web-post-tr thumb-bl-place  0  1 web-post-tl)
+   ;; (hull
+   ;;  (thumb-bl-place (translate (wall-locate2 -0.3 1) web-post-tl))
+   ;;  (thumb-bl-place (translate (wall-locate3 -0.3 1) web-post-tl))
+   ;;  (thumb-bl-place (translate (wall-locate2 -0.3 1) web-post-tr))
+   ;;  (thumb-bl-place (translate (wall-locate3 -0.3 1) web-post-tr))
+   ;;  (thumb-tl-place web-post-tl))
+   
+
    ; thumb walls
    (wall-brace thumb-mr-place  0 -1 web-post-br thumb-tr-place  0 -1 thumb-post-br)
    (wall-brace thumb-mr-place  0 -1 web-post-br thumb-mr-place  0 -1 web-post-bl)
    (wall-brace thumb-br-place  0 -1 web-post-br thumb-br-place  0 -1 web-post-bl)
-   (wall-brace thumb-bl-place  0  1 web-post-tr thumb-bl-place  0  1 web-post-tl)
    (wall-brace thumb-br-place -1  0 web-post-tl thumb-br-place -1  0 web-post-bl)
    (wall-brace thumb-bl-place -1  0 web-post-tl thumb-bl-place -1  0 web-post-bl)
    ; thumb corners
@@ -576,35 +589,54 @@
    (wall-brace thumb-mr-place  0 -1 web-post-bl thumb-br-place  0 -1 web-post-br)
    (wall-brace thumb-bl-place -1  0 web-post-bl thumb-br-place -1  0 web-post-tl)
    (wall-brace thumb-tr-place  0 -1 thumb-post-br (partial key-place 3 lastrow)  0 -1 web-post-bl)
+
    ; clunky bit on the top left thumb connection  (normal connectors don't work well)
-   (bottom-hull
-    (left-key-place cornerrow -1 (translate (wall-locate2 -1 0) web-post))
-    (left-key-place cornerrow -1 (translate (wall-locate3 -1 0) web-post))
-    (thumb-bl-place (translate (wall-locate2 -0.3 1) web-post-tr))
-    (thumb-bl-place (translate (wall-locate3 -0.3 1) web-post-tr)))
-   (hull
-    (left-key-place cornerrow -1 (translate (wall-locate2 -1 0) web-post))
-    (left-key-place cornerrow -1 (translate (wall-locate3 -1 0) web-post))
-    (thumb-bl-place (translate (wall-locate2 -0.3 1) web-post-tr))
-    (thumb-bl-place (translate (wall-locate3 -0.3 1) web-post-tr))
-    (thumb-tl-place web-post-tl))
-   (hull
-    (left-key-place cornerrow -1 web-post)
-    (left-key-place cornerrow -1 (translate (wall-locate1 -1 0) web-post))
-    (left-key-place cornerrow -1 (translate (wall-locate2 -1 0) web-post))
-    (left-key-place cornerrow -1 (translate (wall-locate3 -1 0) web-post))
-    (thumb-tl-place web-post-tl))
-   (hull
-    (left-key-place cornerrow -1 web-post)
-    (left-key-place cornerrow -1 (translate (wall-locate1 -1 0) web-post))
-    (key-place 0 cornerrow web-post-bl)
-    (thumb-tl-place web-post-tl))
-   (hull
+   ;; (bottom-hull
+   ;;  (left-key-place cornerrow -1 (translate (wall-locate2 -1 0) web-post))
+   ;;  (left-key-place cornerrow -1 (translate (wall-locate3 -1 0) web-post))
+   ;;  (thumb-bl-place (translate (wall-locate2 -0.3 1) web-post-tr))
+   ;;  (thumb-bl-place (translate (wall-locate3 -0.3 1) web-post-tr)))
+
+   ;; (hull
+   ;;  (left-key-place cornerrow -1 (translate (wall-locate2 -1 0) web-post))
+   ;;  (left-key-place cornerrow -1 (translate (wall-locate3 -1 0) web-post))
+   ;;  (thumb-bl-place (translate (wall-locate2 -0.3 1) web-post-tr))
+   ;;  (thumb-bl-place (translate (wall-locate3 -0.3 1) web-post-tr))
+   ;;  (thumb-tl-place web-post-tl))
+
+   ;; (hull
+   ;;  (left-key-place cornerrow -1 web-post)
+   ;;  (left-key-place cornerrow -1 (translate (wall-locate1 -1 0) web-post))
+   ;;  (left-key-place cornerrow -1 (translate (wall-locate2 -1 0) web-post))
+   ;;  (left-key-place cornerrow -1 (translate (wall-locate3 -1 0) web-post))
+   ;;  (thumb-tl-place web-post-tl))
+
+   ;; (hull
+   ;;  (left-key-place cornerrow -1 web-post)
+   ;;  (left-key-place cornerrow -1 (translate (wall-locate1 -1 0) web-post))
+   ;;  (key-place 0 cornerrow web-post-bl)
+   ;;  (thumb-tl-place web-post-tl))
+
+   ;; (hull
+   ;;  (thumb-bl-place web-post-tr)
+   ;;  (thumb-bl-place (translate (wall-locate1 -0.3 1) web-post-tr))
+   ;;  (thumb-bl-place (translate (wall-locate2 -0.3 1) web-post-tr))
+   ;;  (thumb-bl-place (translate (wall-locate3 -0.3 1) web-post-tr))
+   ;;  (thumb-tl-place web-post-tl))
+   (triangle-hulls
+    (thumb-tl-place web-post-tl-squish)
+    (thumb-tl-place web-post-tl)
     (thumb-bl-place web-post-tr)
-    (thumb-bl-place (translate (wall-locate1 -0.3 1) web-post-tr))
-    (thumb-bl-place (translate (wall-locate2 -0.3 1) web-post-tr))
-    (thumb-bl-place (translate (wall-locate3 -0.3 1) web-post-tr))
-    (thumb-tl-place web-post-tl))))
+
+    (triangle-hulls
+     (thumb-tl-place web-post-tl-squish)
+     (thumb-bl-place web-post-tr)
+     (thumb-bl-place web-post-tl)
+
+     )
+
+    )
+   ))
 
 (def usb-holder-ref (key-position 0 0 (map - (wall-locate2  0  -1) [0 (/ mount-height 2) 0])))
 
