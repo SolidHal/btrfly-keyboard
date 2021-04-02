@@ -264,7 +264,7 @@
 (def web-post-tl (translate [(+ (/ mount-width -2) post-adj) (- (/ mount-height 2) post-adj) 0] web-post))
 (def web-post-bl (translate [(+ (/ mount-width -2) post-adj) (+ (/ mount-height -2) post-adj) 0] web-post))
 (def web-post-br (translate [(- (/ mount-width 2) post-adj) (+ (/ mount-height -2) post-adj) 0] web-post))
-(def web-post-tl-squish (translate[1.5 21 11]  web-post-tl))
+(def web-post-tl-squish (translate[0.75 20.4 10.3]  web-post-tl))
 
 ; wide posts for 1.5u keys in the main cluster
 
@@ -584,7 +584,6 @@
    (wall-brace thumb-bl-place -1  0 web-post-tl thumb-bl-place -1  0 web-post-bl)
    ; thumb corners
    (wall-brace thumb-br-place -1  0 web-post-bl thumb-br-place  0 -1 web-post-bl)
-   (wall-brace thumb-bl-place -1  0 web-post-tl thumb-bl-place  0  1 web-post-tl)
    ; thumb tweeners
    (wall-brace thumb-mr-place  0 -1 web-post-bl thumb-br-place  0 -1 web-post-br)
    (wall-brace thumb-bl-place -1  0 web-post-bl thumb-br-place -1  0 web-post-tl)
@@ -623,19 +622,32 @@
    ;;  (thumb-bl-place (translate (wall-locate2 -0.3 1) web-post-tr))
    ;;  (thumb-bl-place (translate (wall-locate3 -0.3 1) web-post-tr))
    ;;  (thumb-tl-place web-post-tl))
+   (wall-brace thumb-bl-place -1  0 web-post-tl thumb-bl-place  -1  1 web-post-tl)
    (triangle-hulls
     (thumb-tl-place web-post-tl-squish)
     (thumb-tl-place web-post-tl)
     (thumb-bl-place web-post-tr)
+    )
 
     (triangle-hulls
      (thumb-tl-place web-post-tl-squish)
      (thumb-bl-place web-post-tr)
      (thumb-bl-place web-post-tl)
-
      )
 
-    )
+    (triangle-hulls
+     (thumb-bl-place (translate [-1.47 2 0.8] web-post-tl))
+     (thumb-bl-place web-post-tl)
+     (thumb-bl-place (translate [-3 2 -1] web-post-tl))
+     )
+
+
+    (triangle-hulls
+     (thumb-bl-place (translate [-1.47 2 0.8] web-post-tl))
+     (thumb-bl-place web-post-tl)
+     (thumb-tl-place web-post-tl-squish)
+     )
+
    ))
 
 (def usb-holder-ref (key-position 0 0 (map - (wall-locate2  0  -1) [0 (/ mount-height 2) 0])))
