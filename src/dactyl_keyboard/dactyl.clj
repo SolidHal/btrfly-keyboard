@@ -774,7 +774,8 @@
                                usb-holder-space
                                usb-jack
                                trrs-holder-hole
-                               screw-insert-holes))
+                               screw-insert-holes
+                               ))
                   (translate [0 0 -20] (cube 350 350 40))))
 
 
@@ -787,9 +788,11 @@
                    thumb
                    thumb-connectors
                    (difference (union case-walls
-                                      screw-insert-outers
+                                      ;; screw-insert-outers
                                       )
-                               screw-insert-holes))
+                               ;; screw-insert-holes
+                               ))
+
                   (translate [0 0 -20] (cube 350 350 40))))
 
 
@@ -802,13 +805,13 @@
                           thumb
                           thumb-connectors
                           (difference (union case-walls
-                                             screw-insert-outers
+                                             ;; screw-insert-outers
                                              usb-holder-holder
-                                             trrs-holder)
+                                             )
                                       usb-holder-space
                                       usb-jack
-                                      trrs-holder-hole
-                                      screw-insert-holes))
+                                      ;; screw-insert-holes
+                                      ))
                          (translate [0 0 -20] (cube 350 350 40))))
 
 (spit "things/right.scad"
