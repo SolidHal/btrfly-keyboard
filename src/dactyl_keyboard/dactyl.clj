@@ -34,7 +34,7 @@
 
 (def thumb-offsets [6 -3 7]) ; location of thumb cluster relative to main keyboard body
 
-(def keyboard-z-offset 8)               ; controls overall height; original=9 with centercol=3; use 16 for centercol=2
+(def keyboard-z-offset 8.01)               ; controls overall height; original=9 with centercol=3; use 16 for centercol=2
 
 (def extra-width 1.5)                   ; extra space between the base of keys; original= 2
 (def extra-height 1)                  ; original= 0.5
@@ -792,7 +792,7 @@
                    thumb
                    thumb-connectors
                    (difference (union case-walls
-                                      pro-micro-holder-squish
+                                      ;; pro-micro-holder-squish
                                       ;; screw-insert-outers
                                       )
                                ;; screw-insert-holes
