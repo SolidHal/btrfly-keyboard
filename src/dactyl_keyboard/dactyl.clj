@@ -37,7 +37,7 @@
 (def keyboard-z-offset 8)               ; controls overall height; original=9 with centercol=3; use 16 for centercol=2
 
 (def extra-width 1.5)                   ; extra space between the base of keys; original= 2
-(def extra-height 0.5)                  ; original= 0.5
+(def extra-height 1)                  ; original= 0.5
 
 (def wall-z-offset -3)                 ; original=-15 length of the first downward-sloping part of the wall (negative)
 (def wall-xy-offset 1)                  ; offset in the x and/or y direction for the first downward-sloping part of the wall (negative)
@@ -264,7 +264,7 @@
 (def web-post-tl (translate [(+ (/ mount-width -2) post-adj) (- (/ mount-height 2) post-adj) 0] web-post))
 (def web-post-bl (translate [(+ (/ mount-width -2) post-adj) (+ (/ mount-height -2) post-adj) 0] web-post))
 (def web-post-br (translate [(- (/ mount-width 2) post-adj) (+ (/ mount-height -2) post-adj) 0] web-post))
-(def web-post-tl-squish (translate[0.75 20.4 10.3]  web-post-tl))
+(def web-post-tl-squish (translate[0.69 20.52 10.32]  web-post-tl))
 
 ; wide posts for 1.5u keys in the main cluster
 
@@ -636,14 +636,14 @@
      )
 
     (triangle-hulls
-     (thumb-bl-place (translate [-1.47 2 0.8] web-post-tl))
+     (thumb-bl-place (translate [-1.6 2.6 0.97] web-post-tl))
      (thumb-bl-place web-post-tl)
      (thumb-bl-place (translate [-3 2 -1] web-post-tl))
      )
 
 
     (triangle-hulls
-     (thumb-bl-place (translate [-1.47 2 0.8] web-post-tl))
+     (thumb-bl-place (translate [-1.6 2.6 0.97] web-post-tl))
      (thumb-bl-place web-post-tl)
      (thumb-tl-place web-post-tl-squish)
      )
@@ -671,6 +671,10 @@
    (->> (cube (first pro-micro-holder-size) (second pro-micro-holder-size) (last pro-micro-holder-size))
         (translate [(first pro-micro-position) (second pro-micro-position) (last pro-micro-position)]))
    pro-micro-space))
+(def pro-micro-holder-squish
+  ( rotate (/ π 15) [0 0 -1] (translate [-100 -10 -34.5] (rotate (deg2rad 90) [0 1 0] pro-micro-holder)))
+
+  )
 
 (def trrs-holder-size [6.2 10 2]) ; trrs jack PJ-320A
 (def trrs-holder-hole-size [6.2 10 6]) ; trrs jack PJ-320A
@@ -788,6 +792,7 @@
                    thumb
                    thumb-connectors
                    (difference (union case-walls
+                                      pro-micro-holder-squish
                                       ;; screw-insert-outers
                                       )
                                ;; screw-insert-holes
