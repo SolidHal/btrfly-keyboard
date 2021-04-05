@@ -20,11 +20,11 @@ Build log: https://www.beekeeb.com/dactyl-manuform-mini-mechanical-keyboard-buil
 ## Build QMK
 copy qmk/microdactyl to a new qmk checkout, under the keybaords/handwired directory
 ```
-cp -a qmk/microdactyl $QMK_DIR/keyboards/handwires/
+cp -a qmk/dactyl_squish $QMK_DIR/keyboards/handwired/
 ```
 then flash by running the following from your qmk checkout
 ```
-make handwired/microdactyl/4x6:default:flash
+make handwired/dactyl_squish/squish:default:flash
 ```
 
 ## Forks

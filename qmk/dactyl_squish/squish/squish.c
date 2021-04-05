@@ -1,4 +1,4 @@
-#include "4x6.h"
+#include "squish.h"
 
 
 #ifdef SSD1306OLED
