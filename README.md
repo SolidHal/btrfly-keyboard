@@ -1,13 +1,4 @@
-# Dactyl ManuForm Mini, Solidhal redux
-
-
-## Changes from the standard mini:
-- 5x6 layout
-- outer pinkies are 1u, since I already have tons of 1u
-- pinkie colomns are now shorter in height, resulting in a greater tent angle
-- made footprint smaller by making walls steeper
-- moved keys closer together
-- moved screw holes to work with all of that
+# Dactyl Squish
 
 [render](right.png)
 
@@ -56,6 +47,7 @@ make handwired/dactyl_squish/squish:default:flash
 
 ## License
 
+Copyright © 2021 Hal Emmerich
 Copyright © 2015-2018 Matthew Adereth, Tom Short and Leo Lou
 
 The source code for generating the models is distributed under the [GNU AFFERO GENERAL PUBLIC LICENSE Version 3](LICENSE).
