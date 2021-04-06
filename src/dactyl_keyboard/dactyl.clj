@@ -37,7 +37,7 @@
 (def keyboard-z-offset 8.01)               ; controls overall height; original=9 with centercol=3; use 16 for centercol=2
 
 (def extra-width 1.5)                   ; extra space between the base of keys; original= 2
-(def extra-height 1)                  ; original= 0.5
+(def extra-height 1.5)                  ; original= 0.5
 
 (def wall-z-offset -3)                 ; original=-15 length of the first downward-sloping part of the wall (negative)
 (def wall-xy-offset 1)                  ; offset in the x and/or y direction for the first downward-sloping part of the wall (negative)
@@ -264,7 +264,7 @@
 (def web-post-tl (translate [(+ (/ mount-width -2) post-adj) (- (/ mount-height 2) post-adj) 0] web-post))
 (def web-post-bl (translate [(+ (/ mount-width -2) post-adj) (+ (/ mount-height -2) post-adj) 0] web-post))
 (def web-post-br (translate [(- (/ mount-width 2) post-adj) (+ (/ mount-height -2) post-adj) 0] web-post))
-(def web-post-tl-squish (translate[0.69 20.52 10.32]  web-post-tl))
+(def web-post-tl-squish (translate[0.56 20.52 10.32]  web-post-tl))
 
 ; wide posts for 1.5u keys in the main cluster
 
@@ -487,7 +487,7 @@
   (cond
     (= row 0) (map - (key-position 0 row [(* mount-width 0) (* direction mount-height 0.5) 0]) [19.7 0 -3.75])
     (= row 1) (map - (key-position 0 row [(* mount-width 0) (* direction mount-height 0.5) 0]) [23.5 0 -3.75])
-    (= row 2) (map - (key-position 0 row [(* mount-width 0) (* direction mount-height 0.5) 0]) [27.4 0 -3.75])
+    (= row 2) (map - (key-position 0 row [(* mount-width 0) (* direction mount-height 0.5) 0]) [27.53 0 -3.75])
     ; used for the left/front corner
     (= row 100) (map - (key-position 0 0 [(* mount-width 0) (* direction mount-height 0.5) 0]) [16.1 0 -3.75])
     :else (map - (key-position 0 row [(* mount-width 0) (* direction mount-height 0.5) 0]) [20 0 -3.7])
@@ -636,14 +636,14 @@
      )
 
     (triangle-hulls
-     (thumb-bl-place (translate [-1.6 2.6 0.97] web-post-tl))
+     (thumb-bl-place (translate [-1.7 2.6 0.90] web-post-tl))
      (thumb-bl-place web-post-tl)
      (thumb-bl-place (translate [-3 2 -1] web-post-tl))
      )
 
 
     (triangle-hulls
-     (thumb-bl-place (translate [-1.6 2.6 0.97] web-post-tl))
+     (thumb-bl-place (translate [-1.7 2.6 0.90] web-post-tl))
      (thumb-bl-place web-post-tl)
      (thumb-tl-place web-post-tl-squish)
      )
