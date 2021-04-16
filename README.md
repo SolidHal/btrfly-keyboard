@@ -1,4 +1,4 @@
-# Dactyl Squish
+# btrfly
 
 ![render](right.png)
 
