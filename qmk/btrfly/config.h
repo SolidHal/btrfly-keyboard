@@ -23,6 +23,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* USB Device descriptor parameter */
 #define VENDOR_ID       0x444D
 #define MANUFACTURER    tshort
+#define PRODUCT_ID      0x3436
+#define DEVICE_VER      0x0001
 
 /* mouse config */
 #define MOUSEKEY_INTERVAL       20
@@ -44,6 +46,17 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* Enables This makes it easier for fast typists to use dual-function keys */
 #define PERMISSIVE_HOLD
+
+/* key matrix size */
+#define MATRIX_ROWS 5
+#define MATRIX_COLS 10
+
+// row-driven
+#define MATRIX_ROW_PINS { F7, B1, B3, B2, B6 }
+#define MATRIX_COL_PINS { D3, D2, D1, D0, D4, C6, D7, E6, B4, B5 }
+
+/* COL2ROW or ROW2COL */
+#define DIODE_DIRECTION COL2ROW
 
 /*
  * Feature disable options

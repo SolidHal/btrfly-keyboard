@@ -39,11 +39,11 @@ C9 = B5        B6 = R4
 ## Build QMK
 copy qmk/microdactyl to a new qmk checkout, under the keybaords/handwired directory
 ```
-cp -a qmk/dactyl_squish $QMK_DIR/keyboards/handwired/
+cp -a qmk/btrfly $QMK_DIR/keyboards/handwired/
 ```
 then flash by running the following from your qmk checkout
 ```
-make handwired/dactyl_squish/squish:default:flash
+make handwired/btrfly:default:flash
 ```
 
 ## Features
