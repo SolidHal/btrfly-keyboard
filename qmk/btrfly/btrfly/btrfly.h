@@ -1,6 +1,6 @@
 #pragma once
 
-#include "dactyl_squish.h"
+#include "btrfly.h"
 #include "quantum.h"
 
 #ifdef USE_I2C

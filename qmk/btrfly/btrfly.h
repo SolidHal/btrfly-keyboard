@@ -1,7 +1,7 @@
 #pragma once
 
-#ifdef KEYBOARD_handwired_dactyl_squish
-    #include "squish.h"
+#ifdef KEYBOARD_handwired_btrfly
+    #include "btrfly.h
 #endif
 
 #include "quantum.h"
