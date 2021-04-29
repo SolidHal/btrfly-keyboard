@@ -21650,6 +21650,56 @@ union () {
                 }
               }
             }
+            union () {
+              translate ([-39.84613141992536, 29.828102061303827, 2]) {
+                union () {
+                  cylinder ($fn=30, h=4, r1=2/3, r2=2/3, center=true);
+                  translate ([0, 0, 2]) {
+                    sphere ($fn=30, r=2/3);
+                  }
+                }
+              }
+              translate ([-74.73151456215842, -82.65477028973973, 2]) {
+                union () {
+                  cylinder ($fn=30, h=4, r1=2/3, r2=2/3, center=true);
+                  translate ([0, 0, 2]) {
+                    sphere ($fn=30, r=2/3);
+                  }
+                }
+              }
+              translate ([-10.509574082311602, -48.70712750905158, 2]) {
+                union () {
+                  cylinder ($fn=30, h=4, r1=2/3, r2=2/3, center=true);
+                  translate ([0, 0, 2]) {
+                    sphere ($fn=30, r=2/3);
+                  }
+                }
+              }
+              translate ([4.390425917688397, -29.70712750905158, 2]) {
+                union () {
+                  cylinder ($fn=30, h=4, r1=2/3, r2=2/3, center=true);
+                  translate ([0, 0, 2]) {
+                    sphere ($fn=30, r=2/3);
+                  }
+                }
+              }
+              translate ([5.383344594876962, 29.85428166779895, 2]) {
+                union () {
+                  cylinder ($fn=30, h=4, r1=2/3, r2=2/3, center=true);
+                  translate ([0, 0, 2]) {
+                    sphere ($fn=30, r=2/3);
+                  }
+                }
+              }
+              translate ([-46.70949468181236, -69.80566538255295, 2]) {
+                union () {
+                  cylinder ($fn=30, h=4, r1=2/3, r2=2/3, center=true);
+                  translate ([0, 0, 2]) {
+                    sphere ($fn=30, r=2/3);
+                  }
+                }
+              }
+            }
           }
         }
         translate ([0, 0, -20]) {
@@ -43318,6 +43368,56 @@ union () {
               }
               translate ([-51.666838974875816, 34.254647206382906, 5]) {
                 cube ([15, 20, 6], center=true);
+              }
+              union () {
+                translate ([-39.84613141992536, 29.828102061303827, 2]) {
+                  union () {
+                    cylinder ($fn=30, h=4, r1=2/3, r2=2/3, center=true);
+                    translate ([0, 0, 2]) {
+                      sphere ($fn=30, r=2/3);
+                    }
+                  }
+                }
+                translate ([-74.73151456215842, -82.65477028973973, 2]) {
+                  union () {
+                    cylinder ($fn=30, h=4, r1=2/3, r2=2/3, center=true);
+                    translate ([0, 0, 2]) {
+                      sphere ($fn=30, r=2/3);
+                    }
+                  }
+                }
+                translate ([-10.509574082311602, -48.70712750905158, 2]) {
+                  union () {
+                    cylinder ($fn=30, h=4, r1=2/3, r2=2/3, center=true);
+                    translate ([0, 0, 2]) {
+                      sphere ($fn=30, r=2/3);
+                    }
+                  }
+                }
+                translate ([4.390425917688397, -29.70712750905158, 2]) {
+                  union () {
+                    cylinder ($fn=30, h=4, r1=2/3, r2=2/3, center=true);
+                    translate ([0, 0, 2]) {
+                      sphere ($fn=30, r=2/3);
+                    }
+                  }
+                }
+                translate ([5.383344594876962, 29.85428166779895, 2]) {
+                  union () {
+                    cylinder ($fn=30, h=4, r1=2/3, r2=2/3, center=true);
+                    translate ([0, 0, 2]) {
+                      sphere ($fn=30, r=2/3);
+                    }
+                  }
+                }
+                translate ([-46.70949468181236, -69.80566538255295, 2]) {
+                  union () {
+                    cylinder ($fn=30, h=4, r1=2/3, r2=2/3, center=true);
+                    translate ([0, 0, 2]) {
+                      sphere ($fn=30, r=2/3);
+                    }
+                  }
+                }
               }
             }
           }
