@@ -63,6 +63,9 @@ make handwired/btrfly:default:flash
 
 * NOTE: in the code, the btrfly keyboard is sometimes called "squish"
 
+## In the wild
+https://old.reddit.com/r/ErgoMechKeyboards/comments/nozw1c/btrfly_with_kissboard_configuration_my_first_diy/
+
 ## License
 
 Copyright © 2021 Hal Emmerich
